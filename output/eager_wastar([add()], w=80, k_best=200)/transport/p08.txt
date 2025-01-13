@@ -1,0 +1,442 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: None
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: None
+INFO     translator command line string: /usr/bin/python3 /mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/builds/release/bin/translate/translate.py transport/domain.pddl transport/p08.pddl --sas-file 'output/eager_wastar([add()], w=80, k_best=200)/transport/p08.txt.sas'
+Parsing...
+Parsing: [0.000s CPU, 0.006s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.025s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 27 rules.
+Computing model... [0.030s CPU, 0.034s wall-clock]
+6085 relevant atoms
+5127 auxiliary atoms
+11212 final queue length
+21523 total queue pushes
+Completing instantiation... [0.090s CPU, 0.097s wall-clock]
+Instantiating: [0.130s CPU, 0.160s wall-clock]
+Computing fact groups...
+Finding invariants...
+9 initial candidates
+Finding invariants: [0.000s CPU, 0.002s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.001s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.006s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Processing axioms: [0.010s CPU, 0.006s wall-clock]
+Translating task: [0.080s CPU, 0.089s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+15 propositions removed
+Detecting unreachable propositions: [0.070s CPU, 0.066s wall-clock]
+Reordering and filtering variables...
+15 of 15 variables necessary.
+0 of 15 mutex groups necessary.
+5442 of 5442 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.010s CPU, 0.013s wall-clock]
+Translator variables: 15
+Translator derived variables: 0
+Translator facts: 330
+Translator goal facts: 9
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 5442
+Translator axioms: 0
+Translator task size: 32232
+Translator peak memory: 52180 KB
+Writing output... [0.030s CPU, 0.036s wall-clock]
+Done! [0.320s CPU, 0.384s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: 'output/eager_wastar([add()], w=80, k_best=200)/transport/p08.txt.sas'
+INFO     search time limit: 1799s
+INFO     search memory limit: None
+INFO     search command line string: /mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/builds/release/bin/downward --search 'eager_wastar([add()], w=80, k_best=200)' --internal-plan-file sas_plan < ''"'"'output/eager_wastar([add()], w=80, k_best=200)/transport/p08.txt.sas'"'"''
+[t=0.002177s, 10804 KB] reading input...
+[t=0.017786s, 12364 KB] done reading input!
+[t=0.020210s, 13196 KB] Simplifying 10626 unary operators... done! [10626 unary operators]
+[t=0.025687s, 13988 KB] time to simplify: 0.005477s
+[t=0.026114s, 13988 KB] Initializing additive heuristic...
+[t=0.026290s, 13988 KB] Building successor generator...done!
+[t=0.027650s, 14252 KB] peak memory difference for successor generator creation: 264 KB
+[t=0.027678s, 14252 KB] time for successor generation creation: 0.000000s
+[t=0.027698s, 14252 KB] Variables: 15
+[t=0.027717s, 14252 KB] FactPairs: 330
+[t=0.027736s, 14252 KB] Bytes per state: 12
+[t=0.027754s, 14252 KB] Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+[t=0.027784s, 14252 KB] New best heuristic value for add: 969
+[t=0.027934s, 14252 KB] g=0, 1 evaluated, 0 expanded
+[t=0.027953s, 14252 KB] Initial heuristic value for add: 969
+[t=0.027974s, 14252 KB] pruning method: none
+[t=0.027993s, 14252 KB] New best heuristic value for add: 917
+[t=0.028127s, 14252 KB] g=16, 2 evaluated, 1 expanded
+[t=0.028147s, 14252 KB] New best heuristic value for add: 848
+[t=0.028411s, 14252 KB] g=27, 4 evaluated, 1 expanded
+[t=0.028433s, 14252 KB] New best heuristic value for add: 838
+[t=0.029207s, 14252 KB] g=25, 11 evaluated, 1 expanded
+[t=0.029228s, 14252 KB] New best heuristic value for add: 831
+[t=0.029606s, 14252 KB] g=52, 14 evaluated, 11 expanded
+[t=0.029626s, 14252 KB] New best heuristic value for add: 794
+[t=0.029894s, 14252 KB] g=39, 16 evaluated, 11 expanded
+[t=0.029939s, 14252 KB] New best heuristic value for add: 788
+[t=0.031340s, 14252 KB] g=41, 29 evaluated, 11 expanded
+[t=0.031361s, 14252 KB] New best heuristic value for add: 763
+[t=0.034934s, 14252 KB] g=60, 62 evaluated, 60 expanded
+[t=0.048053s, 14252 KB] New best heuristic value for add: 759
+[t=0.054605s, 14252 KB] g=61, 242 evaluated, 238 expanded
+[t=0.054626s, 14252 KB] New best heuristic value for add: 746
+[t=0.054856s, 14252 KB] g=85, 244 evaluated, 238 expanded
+[t=0.056824s, 14252 KB] New best heuristic value for add: 743
+[t=0.057732s, 14252 KB] g=61, 269 evaluated, 238 expanded
+[t=0.112714s, 14384 KB] New best heuristic value for add: 739
+[t=0.116581s, 14384 KB] g=62, 805 evaluated, 438 expanded
+[t=0.116605s, 14384 KB] New best heuristic value for add: 732
+[t=0.118069s, 14384 KB] g=79, 819 evaluated, 438 expanded
+[t=0.224374s, 15044 KB] New best heuristic value for add: 731
+[t=0.226644s, 15044 KB] g=80, 1814 evaluated, 638 expanded
+[t=0.226667s, 15044 KB] New best heuristic value for add: 728
+[t=0.226934s, 15044 KB] g=80, 1816 evaluated, 638 expanded
+[t=0.226962s, 15044 KB] New best heuristic value for add: 714
+[t=0.227128s, 15044 KB] g=101, 1817 evaluated, 638 expanded
+[t=0.344632s, 15704 KB] New best heuristic value for add: 713
+[t=0.353566s, 15704 KB] g=102, 2958 evaluated, 838 expanded
+[t=0.353592s, 15704 KB] New best heuristic value for add: 710
+[t=0.353854s, 15704 KB] g=102, 2960 evaluated, 838 expanded
+[t=0.353876s, 15704 KB] New best heuristic value for add: 708
+[t=0.354294s, 15704 KB] g=125, 2963 evaluated, 838 expanded
+[t=0.354317s, 15704 KB] New best heuristic value for add: 706
+[t=0.356870s, 15704 KB] g=118, 2987 evaluated, 838 expanded
+[t=0.492291s, 16496 KB] New best heuristic value for add: 705
+[t=0.501294s, 16496 KB] g=119, 4284 evaluated, 1038 expanded
+[t=0.501316s, 16496 KB] New best heuristic value for add: 688
+[t=0.502046s, 16496 KB] g=140, 4290 evaluated, 1038 expanded
+[t=0.502070s, 16496 KB] New best heuristic value for add: 682
+[t=0.503445s, 16496 KB] g=145, 4301 evaluated, 1038 expanded
+[t=0.677902s, 17288 KB] New best heuristic value for add: 679
+[t=0.678374s, 17288 KB] g=164, 5887 evaluated, 1238 expanded, 2 reopened
+[t=0.678401s, 17288 KB] New best heuristic value for add: 678
+[t=0.679254s, 17288 KB] g=146, 5894 evaluated, 1238 expanded, 2 reopened
+[t=0.705332s, 17288 KB] New best heuristic value for add: 674
+[t=0.707655s, 17288 KB] g=140, 6148 evaluated, 1238 expanded, 2 reopened
+[t=0.872862s, 18080 KB] New best heuristic value for add: 673
+[t=0.873130s, 18080 KB] g=154, 7639 evaluated, 1438 expanded, 5 reopened
+[t=0.873157s, 18080 KB] New best heuristic value for add: 668
+[t=0.874274s, 18080 KB] g=160, 7649 evaluated, 1438 expanded, 5 reopened
+[t=0.874303s, 18080 KB] New best heuristic value for add: 659
+[t=0.874558s, 18080 KB] g=172, 7651 evaluated, 1438 expanded, 5 reopened
+[t=0.881504s, 18216 KB] New best heuristic value for add: 658
+[t=0.887025s, 18216 KB] g=184, 7757 evaluated, 1438 expanded, 5 reopened
+[t=1.076960s, 18868 KB] New best heuristic value for add: 654
+[t=1.083173s, 18868 KB] g=203, 9469 evaluated, 1638 expanded, 7 reopened
+[t=1.083199s, 18868 KB] New best heuristic value for add: 653
+[t=1.083700s, 18868 KB] g=206, 9473 evaluated, 1638 expanded, 7 reopened
+[t=1.083722s, 18868 KB] New best heuristic value for add: 649
+[t=1.084002s, 18868 KB] g=199, 9475 evaluated, 1638 expanded, 7 reopened
+[t=1.085088s, 18868 KB] New best heuristic value for add: 646
+[t=1.085464s, 18868 KB] g=178, 9488 evaluated, 1638 expanded, 7 reopened
+[t=1.085486s, 18868 KB] New best heuristic value for add: 645
+[t=1.092919s, 18868 KB] g=226, 9552 evaluated, 1638 expanded, 7 reopened
+[t=1.289474s, 19660 KB] New best heuristic value for add: 639
+[t=1.292319s, 19660 KB] g=245, 11276 evaluated, 1838 expanded, 7 reopened
+[t=1.298601s, 19660 KB] New best heuristic value for add: 622
+[t=1.299108s, 19660 KB] g=220, 11336 evaluated, 1838 expanded, 7 reopened
+[t=1.494049s, 20316 KB] New best heuristic value for add: 621
+[t=1.503284s, 20316 KB] g=207, 13142 evaluated, 2038 expanded, 7 reopened
+[t=1.503312s, 20316 KB] New best heuristic value for add: 596
+[t=1.503588s, 20316 KB] g=228, 13144 evaluated, 2038 expanded, 7 reopened
+[t=1.707601s, 21104 KB] New best heuristic value for add: 595
+[t=1.713377s, 21104 KB] g=229, 14992 evaluated, 2238 expanded, 7 reopened
+[t=1.921476s, 21764 KB] New best heuristic value for add: 592
+[t=1.930682s, 21764 KB] g=248, 16848 evaluated, 2438 expanded, 7 reopened
+[t=1.930704s, 21764 KB] New best heuristic value for add: 580
+[t=1.930845s, 21764 KB] g=244, 16849 evaluated, 2438 expanded, 7 reopened
+[t=2.144361s, 22424 KB] New best heuristic value for add: 579
+[t=2.149573s, 22424 KB] g=245, 18732 evaluated, 2638 expanded, 7 reopened
+[t=2.153199s, 22424 KB] New best heuristic value for add: 568
+[t=2.154828s, 22424 KB] g=317, 18777 evaluated, 2638 expanded, 7 reopened
+[t=2.367117s, 23216 KB] New best heuristic value for add: 567
+[t=2.372064s, 23216 KB] g=259, 20634 evaluated, 2838 expanded, 7 reopened
+[t=2.375954s, 23216 KB] New best heuristic value for add: 558
+[t=2.376001s, 23216 KB] g=270, 20669 evaluated, 2838 expanded, 7 reopened
+[t=2.608507s, 23876 KB] New best heuristic value for add: 554
+[t=2.610286s, 23876 KB] g=271, 22732 evaluated, 3038 expanded, 8 reopened
+[t=2.610312s, 23876 KB] New best heuristic value for add: 552
+[t=2.615959s, 23876 KB] g=333, 22783 evaluated, 3038 expanded, 8 reopened
+[t=2.626301s, 23876 KB] New best heuristic value for add: 542
+[t=2.628443s, 23876 KB] g=271, 22896 evaluated, 3038 expanded, 8 reopened
+[t=2.830899s, 24536 KB] New best heuristic value for add: 538
+[t=2.839362s, 24536 KB] g=272, 24779 evaluated, 3238 expanded, 15 reopened
+[t=2.858420s, 24536 KB] New best heuristic value for add: 537
+[t=2.858752s, 24536 KB] g=301, 24957 evaluated, 3238 expanded, 15 reopened
+[t=3.072276s, 25196 KB] New best heuristic value for add: 523
+[t=3.078527s, 25196 KB] g=313, 26940 evaluated, 3438 expanded, 16 reopened
+[t=3.078551s, 25196 KB] New best heuristic value for add: 522
+[t=3.080949s, 25196 KB] g=336, 26963 evaluated, 3438 expanded, 16 reopened
+[t=3.323140s, 26112 KB] New best heuristic value for add: 497
+[t=3.328534s, 26112 KB] g=361, 29074 evaluated, 3638 expanded, 23 reopened
+[t=3.328560s, 26112 KB] New best heuristic value for add: 496
+[t=3.330741s, 26112 KB] g=399, 29093 evaluated, 3638 expanded, 23 reopened
+[t=3.620405s, 26780 KB] New best heuristic value for add: 495
+[t=3.627105s, 26780 KB] g=400, 31273 evaluated, 3838 expanded, 24 reopened
+[t=3.627132s, 26780 KB] New best heuristic value for add: 484
+[t=3.627746s, 26780 KB] g=413, 31278 evaluated, 3838 expanded, 24 reopened
+[t=3.861800s, 27308 KB] New best heuristic value for add: 483
+[t=3.866184s, 27308 KB] g=414, 33364 evaluated, 4038 expanded, 24 reopened
+[t=3.866213s, 27308 KB] New best heuristic value for add: 469
+[t=3.869458s, 27308 KB] g=414, 33392 evaluated, 4038 expanded, 24 reopened
+[t=4.103280s, 27968 KB] New best heuristic value for add: 468
+[t=4.106152s, 27968 KB] g=415, 35341 evaluated, 4238 expanded, 24 reopened
+[t=4.112318s, 27968 KB] New best heuristic value for add: 455
+[t=4.113933s, 27968 KB] g=405, 35409 evaluated, 4238 expanded, 24 reopened
+[t=4.326268s, 28496 KB] New best heuristic value for add: 453
+[t=4.332330s, 28496 KB] g=430, 37342 evaluated, 4438 expanded, 24 reopened
+[t=4.549348s, 29024 KB] New best heuristic value for add: 452
+[t=4.552649s, 29024 KB] g=431, 39287 evaluated, 4638 expanded, 26 reopened
+[t=4.558149s, 29024 KB] New best heuristic value for add: 442
+[t=4.559408s, 29024 KB] g=430, 39347 evaluated, 4638 expanded, 26 reopened
+[t=4.790613s, 29684 KB] New best heuristic value for add: 441
+[t=4.796779s, 29684 KB] g=431, 41323 evaluated, 4838 expanded, 32 reopened
+[t=4.796810s, 29684 KB] New best heuristic value for add: 430
+[t=4.798042s, 29684 KB] g=480, 41333 evaluated, 4838 expanded, 32 reopened
+[t=5.013366s, 30080 KB] New best heuristic value for add: 428
+[t=5.013865s, 30080 KB] g=456, 43259 evaluated, 4838 expanded, 33 reopened
+[t=5.031511s, 30212 KB] New best heuristic value for add: 405
+[t=5.037012s, 30212 KB] g=505, 43460 evaluated, 5038 expanded, 33 reopened
+[t=5.291862s, 30740 KB] New best heuristic value for add: 393
+[t=5.299944s, 30740 KB] g=519, 45752 evaluated, 5238 expanded, 36 reopened
+[t=5.570922s, 31400 KB] New best heuristic value for add: 387
+[t=5.572186s, 31400 KB] g=508, 47957 evaluated, 5438 expanded, 36 reopened
+[t=5.572426s, 31400 KB] New best heuristic value for add: 386
+[t=5.577515s, 31400 KB] g=502, 47998 evaluated, 5438 expanded, 36 reopened
+[t=5.577547s, 31400 KB] New best heuristic value for add: 378
+[t=5.577821s, 31400 KB] g=520, 48000 evaluated, 5438 expanded, 36 reopened
+[t=5.793005s, 31928 KB] New best heuristic value for add: 377
+[t=5.800010s, 31928 KB] g=521, 49880 evaluated, 5638 expanded, 40 reopened
+[t=5.801839s, 31928 KB] New best heuristic value for add: 375
+[t=5.804223s, 31928 KB] g=522, 49916 evaluated, 5638 expanded, 41 reopened
+[t=5.820060s, 31928 KB] New best heuristic value for add: 373
+[t=5.828510s, 31928 KB] g=510, 50133 evaluated, 5638 expanded, 43 reopened
+[t=6.015120s, 32456 KB] New best heuristic value for add: 360
+[t=6.019777s, 32456 KB] g=523, 51747 evaluated, 5838 expanded, 43 reopened
+[t=6.228949s, 32984 KB] New best heuristic value for add: 359
+[t=6.230452s, 32984 KB] g=524, 53637 evaluated, 6038 expanded, 43 reopened
+[t=6.230483s, 32984 KB] New best heuristic value for add: 349
+[t=6.236643s, 32984 KB] g=523, 53691 evaluated, 6038 expanded, 43 reopened
+[t=6.470235s, 33516 KB] New best heuristic value for add: 348
+[t=6.471630s, 33516 KB] g=524, 55559 evaluated, 6238 expanded, 46 reopened
+[t=6.471664s, 33516 KB] New best heuristic value for add: 346
+[t=6.472718s, 33516 KB] g=539, 55568 evaluated, 6238 expanded, 46 reopened
+[t=6.472743s, 33516 KB] New best heuristic value for add: 338
+[t=6.473438s, 33516 KB] g=536, 55574 evaluated, 6238 expanded, 46 reopened
+[t=6.673873s, 34048 KB] New best heuristic value for add: 334
+[t=6.675663s, 34048 KB] g=551, 57391 evaluated, 6438 expanded, 48 reopened
+[t=6.878309s, 35092 KB] New best heuristic value for add: 333
+[t=6.886795s, 35092 KB] g=552, 59287 evaluated, 6638 expanded, 48 reopened
+[t=6.887219s, 35092 KB] New best heuristic value for add: 323
+[t=6.888072s, 35092 KB] g=600, 59298 evaluated, 6638 expanded, 48 reopened
+[t=7.101191s, 35620 KB] New best heuristic value for add: 321
+[t=7.104773s, 35620 KB] g=614, 61220 evaluated, 6838 expanded, 49 reopened
+[t=7.104800s, 35620 KB] New best heuristic value for add: 307
+[t=7.106033s, 35620 KB] g=590, 61231 evaluated, 6838 expanded, 49 reopened
+[t=7.106059s, 35620 KB] New best heuristic value for add: 300
+[t=7.106206s, 35620 KB] g=583, 61232 evaluated, 6838 expanded, 49 reopened
+[t=7.314092s, 36148 KB] New best heuristic value for add: 293
+[t=7.322950s, 36148 KB] g=601, 63165 evaluated, 7038 expanded, 50 reopened
+[t=7.565174s, 36676 KB] New best heuristic value for add: 271
+[t=7.565958s, 36676 KB] g=623, 65182 evaluated, 7238 expanded, 51 reopened
+[t=7.788116s, 37204 KB] New best heuristic value for add: 248
+[t=7.792949s, 37204 KB] g=646, 67177 evaluated, 7438 expanded, 51 reopened
+[t=8.008628s, 37868 KB] New best heuristic value for add: 247
+[t=8.017135s, 37868 KB] g=647, 69136 evaluated, 7638 expanded, 52 reopened
+[t=8.017310s, 37868 KB] New best heuristic value for add: 236
+[t=8.017768s, 37868 KB] g=658, 69141 evaluated, 7638 expanded, 52 reopened
+[t=8.228539s, 38396 KB] New best heuristic value for add: 235
+[t=8.233743s, 38396 KB] g=659, 71029 evaluated, 7838 expanded, 57 reopened
+[t=8.237232s, 38396 KB] New best heuristic value for add: 234
+[t=8.237634s, 38396 KB] g=669, 71063 evaluated, 7838 expanded, 57 reopened
+[t=8.237670s, 38396 KB] New best heuristic value for add: 226
+[t=8.238676s, 38396 KB] g=666, 71072 evaluated, 7838 expanded, 57 reopened
+[t=8.439077s, 39060 KB] New best heuristic value for add: 222
+[t=8.445535s, 39060 KB] g=681, 72889 evaluated, 8038 expanded, 62 reopened
+[t=8.445564s, 39060 KB] New best heuristic value for add: 220
+[t=8.447506s, 39060 KB] g=687, 72906 evaluated, 8038 expanded, 62 reopened
+[t=8.640612s, 39588 KB] New best heuristic value for add: 219
+[t=8.641052s, 39588 KB] g=662, 74664 evaluated, 8238 expanded, 69 reopened
+[t=8.842638s, 40116 KB] New best heuristic value for add: 218
+[t=8.846872s, 40116 KB] g=663, 76434 evaluated, 8438 expanded, 74 reopened
+[t=8.860598s, 40116 KB] New best heuristic value for add: 204
+[t=8.864554s, 40116 KB] g=709, 76600 evaluated, 8438 expanded, 74 reopened
+[t=9.025835s, 40652 KB] New best heuristic value for add: 184
+[t=9.034061s, 40652 KB] g=731, 78152 evaluated, 8638 expanded, 80 reopened
+[t=9.034094s, 40652 KB] New best heuristic value for add: 176
+[t=9.034326s, 40652 KB] g=737, 78154 evaluated, 8638 expanded, 80 reopened
+[t=9.218345s, 41052 KB] New best heuristic value for add: 160
+[t=9.220003s, 41052 KB] g=753, 79890 evaluated, 8838 expanded, 80 reopened
+[t=9.401910s, 41580 KB] New best heuristic value for add: 135
+[t=9.406998s, 41580 KB] g=778, 81750 evaluated, 9038 expanded, 80 reopened
+[t=9.603836s, 42108 KB] New best heuristic value for add: 134
+[t=9.611765s, 42108 KB] g=779, 83792 evaluated, 9238 expanded, 80 reopened
+[t=9.611792s, 42108 KB] New best heuristic value for add: 123
+[t=9.612237s, 42108 KB] g=790, 83797 evaluated, 9238 expanded, 80 reopened
+[t=9.796276s, 42768 KB] New best heuristic value for add: 122
+[t=9.801745s, 42768 KB] g=791, 85778 evaluated, 9438 expanded, 82 reopened
+[t=9.801776s, 42768 KB] New best heuristic value for add: 121
+[t=9.804946s, 42768 KB] g=801, 85814 evaluated, 9438 expanded, 82 reopened
+[t=9.804973s, 42768 KB] New best heuristic value for add: 113
+[t=9.805699s, 42768 KB] g=798, 85823 evaluated, 9438 expanded, 82 reopened
+[t=9.969810s, 43428 KB] New best heuristic value for add: 109
+[t=9.974129s, 43428 KB] g=813, 87645 evaluated, 9638 expanded, 84 reopened
+[t=9.974158s, 43428 KB] New best heuristic value for add: 107
+[t=9.975950s, 43428 KB] g=793, 87665 evaluated, 9638 expanded, 84 reopened
+[t=10.134513s, 43956 KB] New best heuristic value for add: 106
+[t=10.136903s, 43956 KB] g=794, 89401 evaluated, 9838 expanded, 87 reopened
+[t=10.308943s, 44356 KB] New best heuristic value for add: 105
+[t=10.314085s, 44356 KB] g=795, 91156 evaluated, 10038 expanded, 89 reopened
+[t=10.455680s, 44884 KB] New best heuristic value for add: 104
+[t=10.456279s, 44884 KB] g=796, 92788 evaluated, 10238 expanded, 92 reopened
+[t=10.529007s, 45148 KB] New best heuristic value for add: 94
+[t=10.532752s, 45148 KB] g=854, 93759 evaluated, 10238 expanded, 92 reopened
+[t=10.592979s, 45284 KB] New best heuristic value for add: 92
+[t=10.595256s, 45284 KB] g=868, 94396 evaluated, 10438 expanded, 92 reopened
+[t=10.595287s, 45284 KB] New best heuristic value for add: 83
+[t=10.595400s, 45284 KB] g=876, 94397 evaluated, 10438 expanded, 92 reopened
+[t=10.595425s, 45284 KB] New best heuristic value for add: 82
+[t=10.595989s, 45284 KB] g=866, 94403 evaluated, 10438 expanded, 92 reopened
+[t=10.738965s, 45680 KB] New best heuristic value for add: 80
+[t=10.739254s, 45680 KB] g=880, 95947 evaluated, 10638 expanded, 92 reopened
+[t=10.739284s, 45680 KB] New best heuristic value for add: 71
+[t=10.739381s, 45680 KB] g=888, 95948 evaluated, 10638 expanded, 92 reopened
+[t=10.876358s, 45944 KB] New best heuristic value for add: 70
+[t=10.879619s, 45944 KB] g=882, 97387 evaluated, 10838 expanded, 92 reopened
+[t=11.004679s, 46344 KB] New best heuristic value for add: 69
+[t=11.010002s, 46344 KB] g=883, 98634 evaluated, 11038 expanded, 93 reopened
+[t=11.169771s, 46872 KB] New best heuristic value for add: 54
+[t=11.178011s, 46872 KB] g=946, 100888 evaluated, 11238 expanded, 94 reopened
+[t=11.224530s, 47004 KB] New best heuristic value for add: 42
+[t=11.227356s, 47004 KB] g=967, 101438 evaluated, 11438 expanded, 94 reopened
+[t=11.227383s, 47004 KB] New best heuristic value for add: 31
+[t=11.227447s, 47004 KB] g=969, 101439 evaluated, 11438 expanded, 94 reopened
+[t=11.297332s, 47268 KB] New best heuristic value for add: 30
+[t=11.299184s, 47268 KB] g=991, 102514 evaluated, 11638 expanded, 94 reopened
+[t=11.299223s, 47268 KB] New best heuristic value for add: 15
+[t=11.299326s, 47268 KB] g=985, 102516 evaluated, 11638 expanded, 94 reopened
+[t=11.351863s, 47532 KB] New best heuristic value for add: 14
+[t=11.359892s, 47532 KB] g=986, 103599 evaluated, 11838 expanded, 95 reopened
+[t=11.359922s, 47532 KB] New best heuristic value for add: 3
+[t=11.360129s, 47532 KB] g=997, 103604 evaluated, 11838 expanded, 95 reopened
+[t=11.424748s, 47928 KB] New best heuristic value for add: 2
+[t=11.425777s, 47928 KB] g=998, 105075 evaluated, 12038 expanded, 96 reopened
+[t=11.479568s, 48456 KB] New best heuristic value for add: 1
+[t=11.485420s, 48456 KB] g=999, 106658 evaluated, 12238 expanded, 96 reopened
+[t=11.534220s, 48856 KB] New best heuristic value for add: 0
+[t=11.534848s, 48856 KB] g=1000, 108117 evaluated, 12438 expanded, 96 reopened
+[t=11.570533s, 49252 KB] Solution found!
+[t=11.578696s, 49252 KB] Actual search time: 11.550704s
+drive truck-2 city-loc-1 city-loc-4 (26)
+pick-up truck-2 city-loc-4 package-8 capacity-3 capacity-4 (1)
+drive truck-2 city-loc-4 city-loc-1 (26)
+drive truck-3 city-loc-16 city-loc-15 (27)
+drive truck-1 city-loc-18 city-loc-9 (25)
+drive truck-1 city-loc-9 city-loc-6 (28)
+drive truck-1 city-loc-6 city-loc-2 (19)
+pick-up truck-1 city-loc-2 package-1 capacity-3 capacity-4 (1)
+drive truck-1 city-loc-2 city-loc-6 (19)
+drive truck-1 city-loc-6 city-loc-21 (23)
+drive truck-1 city-loc-21 city-loc-10 (22)
+drive truck-1 city-loc-10 city-loc-3 (25)
+drive truck-1 city-loc-3 city-loc-12 (23)
+drop truck-1 city-loc-12 package-1 capacity-3 capacity-4 (1)
+drive truck-1 city-loc-12 city-loc-19 (28)
+pick-up truck-1 city-loc-19 package-6 capacity-3 capacity-4 (1)
+drive truck-1 city-loc-19 city-loc-12 (28)
+drive truck-1 city-loc-12 city-loc-24 (21)
+pick-up truck-1 city-loc-24 package-3 capacity-2 capacity-3 (1)
+drive truck-1 city-loc-24 city-loc-1 (14)
+drop truck-1 city-loc-1 package-3 capacity-2 capacity-3 (1)
+drive truck-1 city-loc-1 city-loc-4 (26)
+drive truck-1 city-loc-4 city-loc-14 (13)
+drive truck-2 city-loc-1 city-loc-7 (15)
+pick-up truck-3 city-loc-15 package-5 capacity-1 capacity-2 (1)
+drive truck-3 city-loc-15 city-loc-9 (15)
+drop truck-3 city-loc-9 package-5 capacity-1 capacity-2 (1)
+pick-up truck-3 city-loc-9 package-9 capacity-1 capacity-2 (1)
+drive truck-3 city-loc-9 city-loc-15 (15)
+drive truck-3 city-loc-15 city-loc-17 (22)
+drive truck-3 city-loc-17 city-loc-8 (16)
+drive truck-3 city-loc-8 city-loc-14 (25)
+drive truck-3 city-loc-14 city-loc-5 (18)
+pick-up truck-3 city-loc-5 package-4 capacity-0 capacity-1 (1)
+drive truck-3 city-loc-5 city-loc-14 (18)
+drop truck-3 city-loc-14 package-9 capacity-0 capacity-1 (1)
+drive truck-3 city-loc-14 city-loc-8 (25)
+drive truck-3 city-loc-8 city-loc-17 (16)
+drive truck-3 city-loc-17 city-loc-21 (28)
+drive truck-3 city-loc-21 city-loc-6 (23)
+drop truck-3 city-loc-6 package-4 capacity-1 capacity-2 (1)
+drive truck-3 city-loc-6 city-loc-2 (19)
+pick-up truck-3 city-loc-2 package-7 capacity-1 capacity-2 (1)
+drive truck-3 city-loc-2 city-loc-6 (19)
+drive truck-3 city-loc-6 city-loc-21 (23)
+drive truck-3 city-loc-21 city-loc-17 (28)
+drive truck-3 city-loc-17 city-loc-8 (16)
+drive truck-3 city-loc-8 city-loc-14 (25)
+drop truck-3 city-loc-14 package-7 capacity-1 capacity-2 (1)
+pick-up truck-3 city-loc-14 package-9 capacity-1 capacity-2 (1)
+drive truck-3 city-loc-14 city-loc-4 (13)
+drop truck-3 city-loc-4 package-9 capacity-1 capacity-2 (1)
+drive truck-3 city-loc-4 city-loc-1 (26)
+drive truck-2 city-loc-7 city-loc-10 (18)
+drive truck-2 city-loc-10 city-loc-21 (22)
+drive truck-3 city-loc-1 city-loc-24 (14)
+drive truck-3 city-loc-24 city-loc-12 (21)
+drive truck-3 city-loc-12 city-loc-19 (28)
+pick-up truck-3 city-loc-19 package-2 capacity-1 capacity-2 (1)
+drive truck-3 city-loc-19 city-loc-12 (28)
+drive truck-3 city-loc-12 city-loc-3 (23)
+drive truck-3 city-loc-3 city-loc-7 (16)
+drive truck-2 city-loc-21 city-loc-9 (12)
+drop truck-3 city-loc-7 package-2 capacity-1 capacity-2 (1)
+drop truck-2 city-loc-9 package-8 capacity-3 capacity-4 (1)
+drop truck-1 city-loc-14 package-6 capacity-3 capacity-4 (1)
+[t=11.578735s, 49252 KB] Plan length: 66 step(s).
+[t=11.578735s, 49252 KB] Plan cost: 1000
+[t=11.578735s, 49252 KB] Expanded 12638 state(s).
+[t=11.578735s, 49252 KB] Reopened 96 state(s).
+[t=11.578735s, 49252 KB] Evaluated 109566 state(s).
+[t=11.578735s, 49252 KB] Evaluations: 109566
+[t=11.578735s, 49252 KB] Generated 200385 state(s).
+[t=11.578735s, 49252 KB] Dead ends: 0 state(s).
+[t=11.578735s, 49252 KB] Number of registered states: 109566
+[t=11.578735s, 49252 KB] Int hash set load factor: 109566/131072 = 0.835922
+[t=11.578735s, 49252 KB] Int hash set resizes: 17
+[t=11.578735s, 49252 KB] Search time: 11.550981s
+[t=11.578735s, 49252 KB] Total time: 11.578735s
+Solution found.
+Peak memory: 49252 KB
+search exit code: 0
+
+INFO     Planner time: 12.01s

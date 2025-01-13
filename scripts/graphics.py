@@ -1,8 +1,11 @@
 import os
+from collections import defaultdict
+from itertools import cycle
 
 import matplotlib.pyplot as plt
 import numpy as np
-import results
+
+from scripts.paths import K_BEST
 
 
 def compare_results_2(res):
@@ -48,9 +51,9 @@ def compare_field(domain, field, res_lama_first, res_seq_lama, res_opt, logaritm
     fig, ax = plt.subplots(figsize=(12, 6))
 
     # Crear barras con colores y bordes mejorados
-    bars1 = ax.bar(x - width, res_lama_first, width, label='lama-first', color='royalblue', edgecolor='black', alpha=0.85)
-    bars2 = ax.bar(x, res_seq_lama, width, label='seq-sat-lama-2011', color='forestgreen', edgecolor='black', alpha=0.85)
-    bars3 = ax.bar(x + width, res_opt, width, label='seq-opt-fdss-1', color='indianred', edgecolor='black', alpha=0.85)
+    bars1 = ax.bar(x - width, res_lama_first, width, label='astar(add())', color='royalblue', edgecolor='black', alpha=0.85)
+    bars2 = ax.bar(x, res_seq_lama, width, label='astar(add(), k_best=2)', color='forestgreen', edgecolor='black', alpha=0.85)
+    bars3 = ax.bar(x + width, res_opt, width, label='astar(add(), k_best=5)', color='indianred', edgecolor='black', alpha=0.85)
 
     # Añadir texto sobre cada barra con diseño ajustado
     for bars in [bars1, bars2, bars3]:
@@ -98,9 +101,9 @@ def compare_field_single(domain, field, method_name, results):
 
     # Colores específicos para cada método
     color_map = {
-        'lama-first': 'royalblue',
-        'seq-sat-lama-2011': 'forestgreen',
-        'seq-opt-fdss-1': 'indianred'
+        'astar(add())': 'royalblue',
+        'astar(add(), k_best=2)': 'forestgreen',
+        'astar(add(), k_best=5)': 'indianred'
     }
     color = color_map.get(method_name, 'gray')  # Color por defecto en caso de nombre desconocido
 
@@ -183,3 +186,245 @@ def coverage():
 
     file_name = f'./results/coverage.png'
     plt.savefig(file_name, dpi=300)
+
+
+def create_results_table(results):
+    """
+    Crea e imprime con matplotlib una tabla que:
+      - Tiene una fila por cada w.
+      - Para cada k, se generan dos columnas: "Q(k)" y "N(k)".
+
+    Además, añade una leyenda que indica que "Q" representa la calidad y "N" representa el número de nodos.
+
+    :param results: diccionario en la forma:
+        {
+          w: [Results(w, k1), Results(w, k2), ...],
+          ...
+        }
+    """
+    # 1) Reorganizamos la información en un diccionario de la forma:
+    #
+    #     agrupados[w][k] = objeto Results
+    #
+    agrupados = defaultdict(dict)
+
+    # Para recopilar todos los k que aparezcan
+    all_ks = set()
+
+    for w, results_list in results.items():
+        for res_obj in results_list:
+            # Aquí asumimos que res_obj.id tiene un atributo k
+            k_value = res_obj.id.k
+            agrupados[w][k_value] = res_obj
+            all_ks.add(k_value)
+
+    # Ordenamos la lista de k para que las columnas aparezcan en orden
+    all_ks = sorted(all_ks)
+
+    # 2) Construimos los encabezados.
+    #    El primero será "W" y luego, para cada k, dos columnas: "Q(k)" y "N(k)".
+    headers = ["W"]
+    for k in all_ks:
+        headers.append(f"Q(k={k})")
+        headers.append(f"N(k={k})")
+
+    # 3) Construimos las filas de la tabla:
+    #    - una fila por cada w
+    #    - en cada fila, para cada k, ponemos quality y nodes
+    table_data = []
+    for w in sorted(agrupados.keys()):
+        row = [w]  # la primera celda de la fila
+        for k in all_ks:
+            res = agrupados[w].get(k, None)
+            if res is not None:
+                row.append(res.quality)
+                row.append(res.nodes_count)
+            else:
+                # Si no hay resultado para ese k, dejamos la celda vacía
+                row.append("")
+                row.append("")
+        table_data.append(row)
+
+    # 4) Dibujamos la tabla con matplotlib
+    # Ajustamos el tamaño de la figura según el número de columnas y filas
+    fig_height = max(6, len(table_data) * 0.3)  # Ajusta la altura según las filas
+    fig_width = max(8, len(headers) * 1.2)     # Ajusta el ancho según las columnas
+    fig, ax = plt.subplots(figsize=(fig_width, fig_height))
+    ax.axis('off')  # ocultamos los ejes
+
+    tabla = ax.table(
+        cellText=table_data,
+        colLabels=headers,
+        loc='center',
+        cellLoc='center'
+    )
+    tabla.auto_set_font_size(False)
+    tabla.set_fontsize(10)
+    tabla.scale(1, 1.5)
+
+    # 5) Añadimos la leyenda cerca de la tabla
+    # Obtenemos la posición de la tabla para colocar la leyenda justo debajo
+    # Usamos transformaciones de coordenadas para una posición relativa
+
+    # Obtener los límites de la tabla
+    tabla_pos = tabla.get_window_extent(renderer=fig.canvas.get_renderer())
+    # Convertir los límites a coordenadas de la figura
+    tabla_fig_coord = fig.transFigure.inverted().transform(tabla_pos)
+    x_center = 0.5  # Centrado horizontalmente
+
+    # Añadir la leyenda justo debajo de la tabla
+    leyenda = "Leyenda: Q(k) = Calidad para k, N(k) = Número de nodos para k"
+    # Ajustamos el parámetro y para que esté más cerca (por ejemplo, 0.02)
+    plt.figtext(x_center, 0.02, leyenda, wrap=True, horizontalalignment='center', fontsize=12)
+
+    # Ajustamos el layout para dejar espacio para la leyenda
+    plt.tight_layout(rect=[0, 0.05, 1, 1])  # Reducimos el espacio inferior
+
+    plt.show()
+
+def plot_quality_comparison(results):
+    """
+    Crea una gráfica que compara los valores de Q para cada k y w.
+
+    Parámetros:
+        results (dict): Diccionario donde la clave es w y el valor es una lista de objetos Result.
+                        Cada Result tiene .id.w, .id.k, .quality y .nodes_count.
+    """
+    # 1) Agrupar resultados por w y k
+    agrupados = defaultdict(dict)  # agrupados[w][k] = Q
+    all_ws = set()
+    all_ks = set()
+
+    for w, list_of_results in results.items():
+        for res in list_of_results:
+            k_val = res.id.k
+            agrupados[w][k_val] = res.quality
+            all_ws.add(w)
+            all_ks.add(k_val)
+
+    all_ws = sorted(all_ws)
+    all_ks = sorted(all_ks)
+
+    # 2) Crear la gráfica
+    plt.figure(figsize=(10, 6))
+
+    for w in all_ws:
+        qs = [agrupados[w].get(k, None) for k in all_ks]
+        plt.plot(all_ks, qs, marker='o', label=f'w={w}')
+
+    plt.xlabel('K-best', fontsize=12)
+    plt.ylabel('Plan cost', fontsize=12)
+    plt.title('Resultados KWA*', fontsize=14)
+    plt.legend(title='Valores de w')
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.xticks(all_ks)  # Asegura que todos los valores de k se muestren en el eje X
+    plt.tight_layout()
+    plt.show()
+
+def plot_nodes_comparison(results):
+    """
+    Crea una gráfica que compara los valores de Q para cada k y w.
+
+    Parámetros:
+        results (dict): Diccionario donde la clave es w y el valor es una lista de objetos Result.
+                        Cada Result tiene .id.w, .id.k, .quality y .nodes_count.
+    """
+    # 1) Agrupar resultados por w y k
+    agrupados = defaultdict(dict)  # agrupados[w][k] = Q
+    all_ws = set()
+    all_ks = set()
+
+    for w, list_of_results in results.items():
+        for res in list_of_results:
+            k_val = res.id.k
+            agrupados[w][k_val] = res.nodes_count
+            all_ws.add(w)
+            all_ks.add(k_val)
+
+    all_ws = sorted(all_ws)
+    all_ks = sorted(all_ks)
+
+    # 2) Crear la gráfica
+    plt.figure(figsize=(10, 6))
+
+    for w in all_ws:
+        qs = [agrupados[w].get(k, None) for k in all_ks]
+        plt.plot(all_ks, qs, marker='o', label=f'w={w}')
+
+    plt.xlabel('K-best', fontsize=12)
+    plt.ylabel('Nodes generated', fontsize=12)
+    plt.title('Resultados KWA*', fontsize=14)
+    plt.legend(title='Valores de w')
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.xticks(all_ks)  # Asegura que todos los valores de k se muestren en el eje X
+    plt.tight_layout()
+    plt.show()
+
+def plot_time_comparison(results):
+    """
+    Crea una gráfica que compara los valores de Q para cada k y w.
+
+    Parámetros:
+        results (dict): Diccionario donde la clave es w y el valor es una lista de objetos Result.
+                        Cada Result tiene .id.w, .id.k, .quality y .nodes_count.
+    """
+    # 1) Agrupar resultados por w y k
+    agrupados = defaultdict(dict)  # agrupados[w][k] = Q
+    all_ws = set()
+    all_ks = set()
+
+    for w, list_of_results in results.items():
+        for res in list_of_results:
+            k_val = res.id.k
+            agrupados[w][k_val] = res.time
+            all_ws.add(w)
+            all_ks.add(k_val)
+
+    all_ws = sorted(all_ws)
+    all_ks = sorted(all_ks)
+
+    # 2) Crear la gráfica
+    plt.figure(figsize=(10, 6))
+
+    for w in all_ws:
+        qs = [agrupados[w].get(k, None) for k in all_ks]
+        plt.plot(all_ks, qs, marker='o', label=f'w={w}')
+
+    plt.xlabel('K-best', fontsize=12)
+    plt.ylabel('Execution time', fontsize=12)
+    plt.title('Resultados KWA*', fontsize=14)
+    plt.legend(title='Valores de w')
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.xticks(all_ks)  # Asegura que todos los valores de k se muestren en el eje X
+    plt.tight_layout()
+    plt.show()
+
+def plot_quality_nodes_comparison(results):
+    # Crear una gráfica con líneas por cada K-best, ordenando por calidad (Quality)
+    plt.figure(figsize=(12, 8))
+    colors = cycle(['blue', 'green', 'red', 'purple', 'orange', 'cyan', 'magenta', 'brown'])
+
+    for k_best in K_BEST:
+        data_points = []
+        for w, list_of_results in results.items():
+            for res in list_of_results:
+                if res.id.k == k_best:
+                    data_points.append((res.quality, res.nodes_count))
+
+        # Ordenar por calidad
+        data_points = sorted(data_points)
+        qualities, nodes_expanded = zip(*data_points) if data_points else ([], [])
+
+        # Graficar línea para este K-best si hay datos
+        if qualities and nodes_expanded:
+            plt.plot(qualities, nodes_expanded, marker='o', label=f'K-best={k_best}', color=next(colors))
+
+    plt.xlabel('Quality of Solution', fontsize=14)
+    plt.ylabel('Nodes Expanded', fontsize=14)
+    plt.yscale('log')
+    plt.title('Quality vs Nodes Expanded', fontsize=16)
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.legend(title='K-best Values', loc='upper left', bbox_to_anchor=(1, 1))
+    plt.tight_layout()
+    plt.show()
+

@@ -2,13 +2,16 @@ import re
 
 
 class ProblemId:
-    def __init__(self, planner, domain, name):
-        self.planner = planner
+    def __init__(self, algorithm, w_value, k_value, domain, name):
+        self.search = f"{algorithm}([add()], w={w_value}, k_best={k_value})"
         self.domain = domain
         self.name = name
+        self.k = k_value
+        self.w = w_value
+        self.algorithm = algorithm
 
     def output_path(self):
-        return f"./output/{self.planner}/{self.domain}/{self.name}.txt"
+        return f"./output/{self.search}/{self.domain}/{self.name}.txt"
 
     def domain_path(self):
         return f"./{self.domain}/domain.pddl"
@@ -17,7 +20,7 @@ class ProblemId:
         return f"./{self.domain}/{self.name}.pddl"
 
     def __repr__(self):
-        return (f"({self.planner}, {self.domain}, {self.name})")
+        return (f"({self.search}, {self.domain}, {self.name})")
 
 
 class Results:

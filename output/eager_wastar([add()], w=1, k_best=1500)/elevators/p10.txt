@@ -1,0 +1,173 @@
+INFO     planner time limit: 600s
+INFO     planner memory limit: None
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 599s
+INFO     translator memory limit: None
+INFO     translator command line string: /usr/bin/python3 /mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/builds/release/bin/translate/translate.py elevators/domain.pddl elevators/p10.pddl --sas-file 'output/eager_wastar([add()], w=1, k_best=1500)/elevators/p10.txt.sas'
+Parsing...
+Parsing: [0.010s CPU, 0.006s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.012s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 50 rules.
+Computing model... [0.000s CPU, 0.006s wall-clock]
+1075 relevant atoms
+1009 auxiliary atoms
+2084 final queue length
+3454 total queue pushes
+Completing instantiation... [0.010s CPU, 0.011s wall-clock]
+Instantiating: [0.010s CPU, 0.039s wall-clock]
+Computing fact groups...
+Finding invariants...
+12 initial candidates
+Finding invariants: [0.010s CPU, 0.002s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.010s CPU, 0.004s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.010s CPU, 0.012s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+15 propositions removed
+Detecting unreachable propositions: [0.010s CPU, 0.009s wall-clock]
+Reordering and filtering variables...
+15 of 15 variables necessary.
+0 of 15 mutex groups necessary.
+780 of 780 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.002s wall-clock]
+Translator variables: 15
+Translator derived variables: 0
+Translator facts: 125
+Translator goal facts: 7
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 780
+Translator axioms: 0
+Translator task size: 4587
+Translator peak memory: 34180 KB
+Writing output... [0.000s CPU, 0.008s wall-clock]
+Done! [0.050s CPU, 0.084s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: 'output/eager_wastar([add()], w=1, k_best=1500)/elevators/p10.txt.sas'
+INFO     search time limit: 599s
+INFO     search memory limit: None
+INFO     search command line string: /mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/builds/release/bin/downward --search 'eager_wastar([add()], w=1, k_best=1500)' --internal-plan-file sas_plan < ''"'"'output/eager_wastar([add()], w=1, k_best=1500)/elevators/p10.txt.sas'"'"''
+[t=0.001475s, 10804 KB] reading input...
+[t=0.003724s, 10928 KB] done reading input!
+[t=0.005648s, 11324 KB] Simplifying 1480 unary operators... done! [1480 unary operators]
+[t=0.006725s, 11324 KB] time to simplify: 0.001077s
+[t=0.006820s, 11468 KB] Initializing additive heuristic...
+[t=0.006895s, 11468 KB] Building successor generator...done!
+[t=0.007161s, 11468 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.007193s, 11468 KB] time for successor generation creation: 0.000000s
+[t=0.007217s, 11468 KB] Variables: 15
+[t=0.007240s, 11468 KB] FactPairs: 125
+[t=0.007262s, 11468 KB] Bytes per state: 8
+[t=0.007282s, 11468 KB] Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+[t=0.007324s, 11468 KB] New best heuristic value for add: 113
+[t=0.007378s, 11468 KB] g=0, 1 evaluated, 0 expanded
+[t=0.007398s, 11468 KB] Initial heuristic value for add: 113
+[t=0.007418s, 11468 KB] pruning method: none
+[t=0.007437s, 11468 KB] New best heuristic value for add: 108
+[t=0.007513s, 11468 KB] g=7, 4 evaluated, 1 expanded
+[t=0.007532s, 11468 KB] New best heuristic value for add: 107
+[t=0.007627s, 11468 KB] g=7, 9 evaluated, 1 expanded
+[t=0.007648s, 11468 KB] New best heuristic value for add: 106
+[t=0.007684s, 11468 KB] g=6, 10 evaluated, 1 expanded
+[t=0.007704s, 11468 KB] New best heuristic value for add: 100
+[t=0.007881s, 11468 KB] g=13, 22 evaluated, 19 expanded
+[t=0.007902s, 11468 KB] New best heuristic value for add: 99
+[t=0.008020s, 11468 KB] g=19, 29 evaluated, 19 expanded
+[t=0.008040s, 11468 KB] New best heuristic value for add: 85
+[t=0.008141s, 11468 KB] g=6, 35 evaluated, 19 expanded
+[t=0.008161s, 11468 KB] New best heuristic value for add: 80
+[t=0.008531s, 11468 KB] g=7, 63 evaluated, 19 expanded
+[t=0.008609s, 11468 KB] New best heuristic value for add: 73
+[t=0.009894s, 11468 KB] g=14, 162 evaluated, 159 expanded
+[t=0.017908s, 11468 KB] New best heuristic value for add: 68
+[t=0.021199s, 11468 KB] g=27, 836 evaluated, 827 expanded
+[t=0.021227s, 11468 KB] New best heuristic value for add: 66
+[t=0.021308s, 11468 KB] g=14, 840 evaluated, 827 expanded
+[t=0.045832s, 11604 KB] New best heuristic value for add: 61
+[t=0.053053s, 11604 KB] g=27, 3328 evaluated, 2327 expanded
+[t=0.054864s, 11604 KB] New best heuristic value for add: 60
+[t=0.060515s, 11604 KB] g=32, 3954 evaluated, 2327 expanded, 12 reopened
+[t=0.060560s, 11780 KB] New best heuristic value for add: 57
+[t=0.063817s, 11780 KB] g=39, 4101 evaluated, 2327 expanded, 16 reopened
+[t=0.167984s, 12044 KB] New best heuristic value for add: 52
+[t=0.173603s, 12044 KB] g=46, 12240 evaluated, 3827 expanded, 60 reopened
+[t=0.328990s, 12576 KB] New best heuristic value for add: 45
+[t=0.336075s, 12576 KB] g=46, 22622 evaluated, 5327 expanded, 121 reopened
+[t=0.509042s, 13232 KB] New best heuristic value for add: 44
+[t=0.512525s, 13232 KB] g=41, 36173 evaluated, 6827 expanded, 208 reopened
+[t=0.746070s, 13772 KB] New best heuristic value for add: 38
+[t=0.752871s, 13772 KB] g=47, 53040 evaluated, 8327 expanded, 259 reopened
+[t=0.926121s, 14936 KB] New best heuristic value for add: 37
+[t=0.928016s, 14936 KB] g=42, 66564 evaluated, 9827 expanded, 281 reopened
+[t=1.400441s, 15908 KB] New best heuristic value for add: 30
+[t=1.408557s, 15908 KB] g=55, 105170 evaluated, 12827 expanded, 321 reopened
+[t=1.770259s, 18364 KB] New best heuristic value for add: 28
+[t=1.777966s, 18364 KB] g=54, 135673 evaluated, 14327 expanded, 363 reopened
+[t=2.405932s, 19484 KB] New best heuristic value for add: 21
+[t=2.409488s, 19484 KB] g=66, 186812 evaluated, 18827 expanded, 602 reopened
+[t=2.851798s, 20688 KB] New best heuristic value for add: 20
+[t=2.856477s, 20688 KB] g=65, 224089 evaluated, 21827 expanded, 755 reopened
+[t=3.250120s, 25052 KB] New best heuristic value for add: 16
+[t=3.253307s, 25052 KB] g=64, 259517 evaluated, 24827 expanded, 888 reopened
+[t=3.477594s, 25052 KB] New best heuristic value for add: 13
+[t=3.483646s, 25052 KB] g=65, 277565 evaluated, 26327 expanded, 949 reopened
+[t=4.141594s, 26472 KB] New best heuristic value for add: 6
+[t=4.149804s, 26472 KB] g=76, 340079 evaluated, 30827 expanded, 1024 reopened
+Peak memory: 28464 KB
+caught signal 2 -- exiting
+Traceback (most recent call last):
+  File "/mnt/c/Alvaro/Universidad/PlanningFinalProject/./downward/fast-downward.py", line 5, in <module>
+    main()
+  File "/mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/driver/main.py", line 40, in main
+    (exitcode, continue_execution) = run_components.run_search(args)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/driver/run_components.py", line 130, in run_search
+    call.check_call(
+  File "/mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/driver/call.py", line 63, in check_call
+    return subprocess.check_call(cmd, stdin=stdin_file, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 408, in check_call
+    retcode = call(*popenargs, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 391, in call
+    return p.wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 2053, in _wait
+    (pid, sts) = self._try_wait(0)
+                 ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 2011, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

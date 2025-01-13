@@ -1,0 +1,176 @@
+INFO     planner time limit: 600s
+INFO     planner memory limit: None
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 599s
+INFO     translator memory limit: None
+INFO     translator command line string: /usr/bin/python3 /mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/builds/release/bin/translate/translate.py elevators/domain.pddl elevators/p08.pddl --sas-file 'output/eager_wastar([add()], w=5, k_best=5)/elevators/p08.txt.sas'
+Parsing...
+Parsing: [0.000s CPU, 0.006s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.011s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 50 rules.
+Computing model... [0.010s CPU, 0.005s wall-clock]
+959 relevant atoms
+952 auxiliary atoms
+1911 final queue length
+3093 total queue pushes
+Completing instantiation... [0.010s CPU, 0.010s wall-clock]
+Instantiating: [0.020s CPU, 0.029s wall-clock]
+Computing fact groups...
+Finding invariants...
+12 initial candidates
+Finding invariants: [0.000s CPU, 0.001s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.004s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.010s CPU, 0.012s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+14 propositions removed
+Detecting unreachable propositions: [0.010s CPU, 0.006s wall-clock]
+Reordering and filtering variables...
+14 of 14 variables necessary.
+0 of 14 mutex groups necessary.
+680 of 680 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.002s wall-clock]
+Translator variables: 14
+Translator derived variables: 0
+Translator facts: 112
+Translator goal facts: 6
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 680
+Translator axioms: 0
+Translator task size: 3972
+Translator peak memory: 34176 KB
+Writing output... [0.000s CPU, 0.006s wall-clock]
+Done! [0.040s CPU, 0.067s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: 'output/eager_wastar([add()], w=5, k_best=5)/elevators/p08.txt.sas'
+INFO     search time limit: 599s
+INFO     search memory limit: None
+INFO     search command line string: /mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/builds/release/bin/downward --search 'eager_wastar([add()], w=5, k_best=5)' --internal-plan-file sas_plan < ''"'"'output/eager_wastar([add()], w=5, k_best=5)/elevators/p08.txt.sas'"'"''
+[t=0.001464s, 10804 KB] reading input...
+[t=0.003053s, 10928 KB] done reading input!
+[t=0.003183s, 11324 KB] Simplifying 1280 unary operators... done! [1280 unary operators]
+[t=0.004575s, 11324 KB] time to simplify: 0.001392s
+[t=0.004657s, 11324 KB] Initializing additive heuristic...
+[t=0.004719s, 11324 KB] Building successor generator...done!
+[t=0.004938s, 11324 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.004978s, 11324 KB] time for successor generation creation: 0.000000s
+[t=0.004998s, 11324 KB] Variables: 14
+[t=0.005021s, 11324 KB] FactPairs: 112
+[t=0.005045s, 11324 KB] Bytes per state: 8
+[t=0.005066s, 11324 KB] Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+[t=0.005101s, 11324 KB] New best heuristic value for add: 110
+[t=0.005147s, 11324 KB] g=0, 1 evaluated, 0 expanded
+[t=0.005167s, 11324 KB] Initial heuristic value for add: 110
+[t=0.005190s, 11324 KB] pruning method: none
+[t=0.005215s, 11324 KB] New best heuristic value for add: 85
+[t=0.005333s, 11324 KB] g=9, 8 evaluated, 1 expanded
+[t=0.005358s, 11324 KB] New best heuristic value for add: 75
+[t=0.005626s, 11324 KB] g=22, 31 evaluated, 6 expanded
+[t=0.005654s, 11324 KB] New best heuristic value for add: 72
+[t=0.006288s, 11324 KB] g=7, 87 evaluated, 6 expanded
+[t=0.006308s, 11324 KB] New best heuristic value for add: 56
+[t=0.007391s, 11324 KB] g=26, 197 evaluated, 16 expanded
+[t=0.007421s, 11324 KB] New best heuristic value for add: 47
+[t=0.010047s, 11324 KB] g=39, 473 evaluated, 31 expanded
+[t=0.010711s, 11456 KB] New best heuristic value for add: 40
+[t=0.011821s, 11456 KB] g=48, 645 evaluated, 41 expanded
+[t=0.011847s, 11456 KB] New best heuristic value for add: 36
+[t=0.013070s, 11456 KB] g=56, 767 evaluated, 51 expanded
+[t=0.013097s, 11456 KB] New best heuristic value for add: 32
+[t=0.014634s, 11456 KB] g=64, 924 evaluated, 61 expanded
+[t=0.014666s, 11456 KB] New best heuristic value for add: 23
+[t=0.016753s, 11456 KB] g=71, 1133 evaluated, 76 expanded
+[t=0.019242s, 11456 KB] New best heuristic value for add: 22
+[t=0.024535s, 11456 KB] g=84, 1969 evaluated, 131 expanded
+[t=0.024569s, 11456 KB] New best heuristic value for add: 16
+[t=0.024613s, 11456 KB] g=85, 1970 evaluated, 131 expanded
+[t=0.024640s, 11584 KB] New best heuristic value for add: 15
+[t=0.026262s, 11584 KB] g=91, 2140 evaluated, 146 expanded
+[t=0.026284s, 11584 KB] New best heuristic value for add: 14
+[t=0.026328s, 11584 KB] g=92, 2141 evaluated, 146 expanded
+[t=0.026350s, 11584 KB] New best heuristic value for add: 13
+[t=0.026379s, 11584 KB] g=93, 2142 evaluated, 146 expanded
+[t=0.026404s, 11584 KB] New best heuristic value for add: 7
+[t=0.026486s, 11584 KB] g=94, 2143 evaluated, 146 expanded
+[t=0.027566s, 11584 KB] New best heuristic value for add: 6
+[t=0.030340s, 11584 KB] g=107, 2766 evaluated, 191 expanded
+[t=0.030368s, 11584 KB] New best heuristic value for add: 0
+[t=0.030417s, 11584 KB] g=108, 2767 evaluated, 191 expanded
+[t=0.030443s, 11584 KB] Solution found!
+[t=0.031858s, 11584 KB] Actual search time: 0.026643s
+board p0 slow1-0 n6 n0 n1 (0)
+move-down-slow slow1-0 n6 n4 (7)
+board p5 fast1 n6 n0 n1 (0)
+move-down-fast fast1 n6 n0 (19)
+board p2 fast1 n0 n1 n2 (0)
+leave p5 fast1 n0 n2 n1 (0)
+move-up-fast fast1 n0 n4 (13)
+move-down-slow slow0-0 n4 n0 (9)
+board p4 slow0-0 n0 n0 n1 (0)
+move-up-slow slow0-0 n0 n3 (8)
+leave p4 slow0-0 n3 n1 n0 (0)
+move-up-slow slow0-0 n3 n4 (6)
+leave p0 slow1-0 n4 n1 n0 (0)
+board p0 slow0-0 n4 n0 n1 (0)
+move-down-slow slow0-0 n4 n0 (9)
+leave p0 slow0-0 n0 n1 n0 (0)
+move-up-slow slow0-0 n0 n2 (7)
+board p1 slow0-0 n2 n0 n1 (0)
+move-up-slow slow0-0 n2 n4 (7)
+leave p1 slow0-0 n4 n1 n0 (0)
+board p1 slow1-0 n4 n0 n1 (0)
+move-up-slow slow1-0 n4 n8 (9)
+move-down-slow slow0-0 n4 n2 (7)
+board p3 slow0-0 n2 n0 n1 (0)
+move-up-slow slow0-0 n2 n4 (7)
+leave p1 slow1-0 n8 n1 n0 (0)
+leave p3 slow0-0 n4 n1 n0 (0)
+leave p2 fast1 n4 n1 n0 (0)
+[t=0.031889s, 11584 KB] Plan length: 28 step(s).
+[t=0.031889s, 11584 KB] Plan cost: 108
+[t=0.031889s, 11584 KB] Expanded 211 state(s).
+[t=0.031889s, 11584 KB] Reopened 0 state(s).
+[t=0.031889s, 11584 KB] Evaluated 3045 state(s).
+[t=0.031889s, 11584 KB] Evaluations: 3045
+[t=0.031889s, 11584 KB] Generated 4051 state(s).
+[t=0.031889s, 11584 KB] Dead ends: 0 state(s).
+[t=0.031889s, 11584 KB] Number of registered states: 3045
+[t=0.031889s, 11584 KB] Int hash set load factor: 3045/4096 = 0.743408
+[t=0.031889s, 11584 KB] Int hash set resizes: 12
+[t=0.031889s, 11584 KB] Search time: 0.026823s
+[t=0.031889s, 11584 KB] Total time: 0.031889s
+Solution found.
+Peak memory: 11584 KB
+search exit code: 0
+
+INFO     Planner time: 0.15s

@@ -1,23 +1,26 @@
 import os
 import subprocess
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from scripts.graphics import compare_field, compare_field_single, coverage
+from pathlib import Path
+
+from scripts.graphics import create_results_table, plot_quality_comparison, plot_nodes_comparison, plot_time_comparison, \
+    plot_quality_nodes_comparison
 from scripts.paths import *
 from scripts.results import *
+from scripts.results import parse_results
 
 
 def execute_problem(p_id: ProblemId):
     command = [
-        "./downward/fast-downward.py", "--overall-time-limit", "1800", "--alias", p_id.planner,
-        p_id.domain_path(), p_id.problem_path()
+        "./downward/fast-downward.py", "--overall-time-limit", "1800", f"--sas-file", f"{p_id.output_path()}.sas",  p_id.domain_path(), p_id.problem_path(), "--search", p_id.search,
     ]
 
     if os.path.exists(p_id.output_path()):
         print(f"Output file {p_id.output_path()} already exists. Skipping problem...")
         return
 
-    print(f"Executing ({p_id.planner}): {' '.join(command)}")
+    print(f"Executing ({p_id.search}): {' '.join(command)}")
     with open(p_id.output_path(), "w") as outfile:
         subprocess.run(command, stdout=outfile, stderr=subprocess.STDOUT)
 
@@ -27,65 +30,51 @@ def build():
     ]
     subprocess.run(command)
 
-if __name__ == "__main__":
-    # Create directories
-    os.makedirs(LAMA_FIRST_E, exist_ok=True)
-    os.makedirs(LAMA_FIRST_T, exist_ok=True)
-    os.makedirs(SEQ_SAT_LAMA_E, exist_ok=True)
-    os.makedirs(SEQ_SAT_LAMA_T, exist_ok=True)
-    os.makedirs(SEQ_OPT_FDSS_E, exist_ok=True)
-    os.makedirs(SEQ_OPT_FDSS_T, exist_ok=True)
+def create_directories():
+    for algo in SEARCH_ALGORITHM:
+        for k in K_BEST:
+            for w in W_VALUE:
+                os.makedirs(f"./output/{algo}([add()], w={w}, k_best={k})/{DOMAINS[0]}", exist_ok=True)
+                os.makedirs(f"./output/{algo}([add()], w={w}, k_best={k})/{DOMAINS[1]}", exist_ok=True)
+                # os.makedirs(f"./output/{algo}([add()], w={w}, k_best={k})/{DOMAINS[2]}", exist_ok=True)
 
-    build()
-    # Problem names
+def build_and_collect_problems():
+    # build()  # Suponiendo que `build` está definido previamente
     problem_ids = []
-    for planner in PLANNERS:
-        problem_ids.extend([ProblemId(planner, DOMAINS[0], f"p{i:02}") for i in range(1, 11)])
-        problem_ids.extend([ProblemId(planner, DOMAINS[1], f"p{i:02}") for i in range(1, 11)])
+    for i in range(8, 9):  # Bucle externo sobre los problemas (p1 a p10)
+        for algo in SEARCH_ALGORITHM:
+            for k in K_BEST:
+                for w in W_VALUE:
+                    problem_ids.append(ProblemId(algo, w, k, DOMAINS[0], f"p{i:02}"))
+                    problem_ids.append(ProblemId(algo, w, k, DOMAINS[1], f"p{i:02}"))
+                    # problem_ids.append(ProblemId(algo, w, k, DOMAINS[2], f"p{i:02}"))
+    return problem_ids
 
-    for problem_id in problem_ids:
-        execute_problem(problem_id)
+def execute_problem_threaded(problem_id):
+    execute_problem(problem_id)  # Suponiendo que `execute_problem` está definido previamente
 
-    # results = [parse_results(problem) for problem in problem_ids]
+if __name__ == "__main__":
+    create_directories()
+    problem_ids = build_and_collect_problems()
+
+    # Ejecutar en múltiples hilos
+    with ThreadPoolExecutor(max_workers=2) as executor:  # Puedes ajustar `max_workers` según tus necesidades
+        futures = [executor.submit(execute_problem_threaded, problem_id) for problem_id in problem_ids]
+
+        # Opcional: mostrar el progreso
+        for future in as_completed(futures):
+            try:
+                future.result()  # Verifica si hay excepciones
+            except Exception as e:
+                print(f"Error ejecutando un problema: {e}")
+
     results = {
-        domain: {
-            planner: [parse_results(problem) for problem in problem_ids if
-                      problem.domain == domain and problem.planner == planner]
-            for planner in PLANNERS
-        }
-        for domain in DOMAINS
+        w: [parse_results(problem) for problem in problem_ids if problem.domain == "transport" and w == problem.w and problem.name == "p08"]
+        for w in W_VALUE
     }
 
-    for domain, planners in results.items():
-        compare_field(domain, "Time(s)",
-                      [result.time for result in planners[PLANNERS[0]]],
-                      [result.time for result in planners[PLANNERS[1]]],
-                      [result.time for result in planners[PLANNERS[2]]], True)
-        compare_field(domain, "Length",
-                      [result.length for result in planners[PLANNERS[0]]],
-                      [result.length for result in planners[PLANNERS[1]]],
-                      [result.length for result in planners[PLANNERS[2]]])
-        compare_field(domain, "Quality",
-                      [result.quality for result in planners[PLANNERS[0]]],
-                      [result.quality for result in planners[PLANNERS[1]]],
-                      [result.quality for result in planners[PLANNERS[2]]])
-        compare_field(domain, "Nodes",
-                      [result.nodes_count for result in planners[PLANNERS[0]]],
-                      [result.nodes_count for result in planners[PLANNERS[1]]],
-                      [result.nodes_count for result in planners[PLANNERS[2]]], True)
-        
-        # Graficar resultados para lama_first
-        res_lama_first = [result.time for result in planners[PLANNERS[0]]]
-        compare_field_single(domain, field="Time(s)", method_name="lama-first", results=res_lama_first)
-
-        # Graficar resultados para seq_lama
-        res_seq_lama = [result.time for result in planners[PLANNERS[1]]]
-        compare_field_single(domain, field="Time(s)", method_name="seq-sat-lama-2011", results=res_seq_lama)
-
-        # Graficar resultados para seq_opt
-        res_opt = [result.time for result in planners[PLANNERS[2]]]
-        compare_field_single(domain, field="Time(s)", method_name="seq-opt-fdss-1", results=res_opt)
-
-    #Coverage graphic
-    coverage()
-    print("Finish")
+    create_results_table(results)
+    plot_quality_comparison(results)
+    plot_nodes_comparison(results)
+    plot_time_comparison(results)
+    plot_quality_nodes_comparison(results)

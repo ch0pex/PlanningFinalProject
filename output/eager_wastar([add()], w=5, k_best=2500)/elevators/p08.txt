@@ -1,0 +1,181 @@
+INFO     planner time limit: 600s
+INFO     planner memory limit: None
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 599s
+INFO     translator memory limit: None
+INFO     translator command line string: /usr/bin/python3 /mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/builds/release/bin/translate/translate.py elevators/domain.pddl elevators/p08.pddl --sas-file 'output/eager_wastar([add()], w=5, k_best=2500)/elevators/p08.txt.sas'
+Parsing...
+Parsing: [0.020s CPU, 0.006s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.013s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 50 rules.
+Computing model... [0.000s CPU, 0.006s wall-clock]
+959 relevant atoms
+952 auxiliary atoms
+1911 final queue length
+3093 total queue pushes
+Completing instantiation... [0.010s CPU, 0.010s wall-clock]
+Instantiating: [0.010s CPU, 0.031s wall-clock]
+Computing fact groups...
+Finding invariants...
+12 initial candidates
+Finding invariants: [0.010s CPU, 0.001s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.010s CPU, 0.003s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.010s CPU, 0.011s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+14 propositions removed
+Detecting unreachable propositions: [0.000s CPU, 0.005s wall-clock]
+Reordering and filtering variables...
+14 of 14 variables necessary.
+0 of 14 mutex groups necessary.
+680 of 680 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.002s wall-clock]
+Translator variables: 14
+Translator derived variables: 0
+Translator facts: 112
+Translator goal facts: 6
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 680
+Translator axioms: 0
+Translator task size: 3972
+Translator peak memory: 34176 KB
+Writing output... [0.010s CPU, 0.006s wall-clock]
+Done! [0.060s CPU, 0.068s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: 'output/eager_wastar([add()], w=5, k_best=2500)/elevators/p08.txt.sas'
+INFO     search time limit: 599s
+INFO     search memory limit: None
+INFO     search command line string: /mnt/c/Alvaro/Universidad/PlanningFinalProject/downward/builds/release/bin/downward --search 'eager_wastar([add()], w=5, k_best=2500)' --internal-plan-file sas_plan < ''"'"'output/eager_wastar([add()], w=5, k_best=2500)/elevators/p08.txt.sas'"'"''
+[t=0.001476s, 10804 KB] reading input...
+[t=0.003108s, 10928 KB] done reading input!
+[t=0.003237s, 11324 KB] Simplifying 1280 unary operators... done! [1280 unary operators]
+[t=0.004602s, 11324 KB] time to simplify: 0.001365s
+[t=0.004674s, 11324 KB] Initializing additive heuristic...
+[t=0.004733s, 11324 KB] Building successor generator...done!
+[t=0.004967s, 11324 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.005010s, 11324 KB] time for successor generation creation: 0.000149s
+[t=0.005038s, 11324 KB] Variables: 14
+[t=0.005068s, 11324 KB] FactPairs: 112
+[t=0.005090s, 11324 KB] Bytes per state: 8
+[t=0.005114s, 11324 KB] Conducting best first search with reopening closed nodes, (real) bound = 2147483647
+[t=0.005152s, 11324 KB] New best heuristic value for add: 110
+[t=0.005194s, 11324 KB] g=0, 1 evaluated, 0 expanded
+[t=0.005214s, 11324 KB] Initial heuristic value for add: 110
+[t=0.005241s, 11324 KB] pruning method: none
+[t=0.005267s, 11500 KB] New best heuristic value for add: 85
+[t=0.005375s, 11500 KB] g=9, 8 evaluated, 1 expanded
+[t=0.005398s, 11608 KB] New best heuristic value for add: 75
+[t=0.005679s, 11608 KB] g=22, 31 evaluated, 21 expanded
+[t=0.005702s, 11608 KB] New best heuristic value for add: 72
+[t=0.006291s, 11608 KB] g=7, 87 evaluated, 21 expanded
+[t=0.006316s, 11608 KB] New best heuristic value for add: 69
+[t=0.007810s, 11608 KB] g=16, 233 evaluated, 199 expanded
+[t=0.007832s, 11608 KB] New best heuristic value for add: 66
+[t=0.008977s, 11608 KB] g=22, 348 evaluated, 199 expanded
+[t=0.012422s, 11608 KB] New best heuristic value for add: 65
+[t=0.013688s, 11608 KB] g=7, 817 evaluated, 199 expanded
+[t=0.013713s, 11608 KB] New best heuristic value for add: 62
+[t=0.018303s, 11608 KB] g=16, 1249 evaluated, 1202 expanded
+[t=0.018326s, 11608 KB] New best heuristic value for add: 56
+[t=0.018887s, 11608 KB] g=26, 1305 evaluated, 1202 expanded
+[t=0.059141s, 12008 KB] New best heuristic value for add: 43
+[t=0.066077s, 12008 KB] g=47, 5849 evaluated, 3702 expanded
+[t=0.400159s, 13640 KB] New best heuristic value for add: 40
+[t=0.403811s, 13640 KB] g=55, 37331 evaluated, 8702 expanded, 110 reopened
+[t=0.403840s, 13640 KB] New best heuristic value for add: 39
+[t=0.404008s, 13640 KB] g=55, 37345 evaluated, 8702 expanded, 110 reopened
+[t=0.404035s, 13640 KB] New best heuristic value for add: 37
+[t=0.404704s, 13640 KB] g=54, 37404 evaluated, 8702 expanded, 110 reopened
+[t=0.404730s, 13640 KB] New best heuristic value for add: 33
+[t=0.404778s, 13640 KB] g=66, 37406 evaluated, 8702 expanded, 110 reopened
+[t=0.645369s, 15212 KB] New best heuristic value for add: 30
+[t=0.651970s, 15212 KB] g=54, 59977 evaluated, 11202 expanded, 234 reopened
+[t=0.651994s, 15212 KB] New best heuristic value for add: 29
+[t=0.653030s, 15212 KB] g=44, 60064 evaluated, 11202 expanded, 234 reopened
+[t=0.910304s, 15632 KB] New best heuristic value for add: 26
+[t=0.916218s, 15632 KB] g=61, 83888 evaluated, 13702 expanded, 372 reopened
+[t=0.916246s, 15632 KB] New best heuristic value for add: 24
+[t=0.917331s, 15632 KB] g=71, 84011 evaluated, 13702 expanded, 372 reopened
+[t=0.917354s, 15632 KB] New best heuristic value for add: 22
+[t=0.919098s, 15632 KB] g=75, 84212 evaluated, 13702 expanded, 372 reopened
+[t=1.146491s, 16436 KB] New best heuristic value for add: 17
+[t=1.153101s, 16436 KB] g=67, 108778 evaluated, 16202 expanded, 425 reopened
+[t=1.155605s, 16436 KB] New best heuristic value for add: 13
+[t=1.160228s, 16436 KB] g=75, 109589 evaluated, 16202 expanded, 430 reopened
+[t=1.657823s, 18948 KB] New best heuristic value for add: 12
+[t=1.659358s, 18948 KB] g=81, 159706 evaluated, 21202 expanded, 527 reopened
+[t=1.659389s, 19084 KB] New best heuristic value for add: 7
+[t=1.661509s, 19084 KB] g=80, 159971 evaluated, 21202 expanded, 527 reopened
+[t=1.903676s, 19888 KB] New best heuristic value for add: 6
+[t=1.910987s, 19888 KB] g=75, 186900 evaluated, 23702 expanded, 611 reopened
+[t=2.168740s, 20700 KB] New best heuristic value for add: 0
+[t=2.169626s, 20700 KB] g=87, 214452 evaluated, 26202 expanded, 937 reopened
+[t=3.239861s, 27032 KB] Solution found!
+[t=3.247827s, 27032 KB] Actual search time: 3.242561s
+board p0 fast1 n6 n0 n1 (0)
+board p5 fast1 n6 n1 n2 (0)
+move-down-fast fast1 n6 n0 (19)
+move-down-slow slow0-0 n4 n0 (9)
+leave p0 fast1 n0 n2 n1 (0)
+leave p5 fast1 n0 n1 n0 (0)
+move-up-fast fast1 n0 n2 (7)
+board p1 fast1 n2 n0 n1 (0)
+board p3 fast1 n2 n1 n2 (0)
+move-up-fast fast1 n2 n4 (7)
+leave p3 fast1 n4 n2 n1 (0)
+move-up-fast fast1 n4 n8 (13)
+board p2 slow0-0 n0 n0 n1 (0)
+board p4 slow0-0 n0 n1 n2 (0)
+move-up-slow slow0-0 n0 n3 (8)
+leave p4 slow0-0 n3 n2 n1 (0)
+move-up-slow slow0-0 n3 n4 (6)
+leave p2 slow0-0 n4 n1 n0 (0)
+leave p1 fast1 n8 n1 n0 (0)
+[t=3.247865s, 27032 KB] Plan length: 19 step(s).
+[t=3.247865s, 27032 KB] Plan cost: 69
+[t=3.247865s, 27032 KB] Expanded 41202 state(s).
+[t=3.247865s, 27032 KB] Reopened 4163 state(s).
+[t=3.247865s, 27032 KB] Evaluated 349896 state(s).
+[t=3.247865s, 27032 KB] Evaluations: 349896
+[t=3.247865s, 27032 KB] Generated 821509 state(s).
+[t=3.247865s, 27032 KB] Dead ends: 0 state(s).
+[t=3.247865s, 27032 KB] Number of registered states: 349896
+[t=3.247865s, 27032 KB] Int hash set load factor: 349896/524288 = 0.667374
+[t=3.247865s, 27032 KB] Int hash set resizes: 19
+[t=3.247865s, 27032 KB] Search time: 3.242751s
+[t=3.247865s, 27032 KB] Total time: 3.247865s
+Solution found.
+Peak memory: 27032 KB
+search exit code: 0
+
+INFO     Planner time: 3.38s

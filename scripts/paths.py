@@ -1,9 +1,6 @@
-PLANNERS = ["lama-first", "seq-sat-lama-2011", "seq-opt-fdss-1"]
-DOMAINS = ["elevators", "transport"]
 
-LAMA_FIRST_E = f"./output/{PLANNERS[0]}/{DOMAINS[0]}"
-LAMA_FIRST_T = f"./output/{PLANNERS[1]}/{DOMAINS[1]}"
-SEQ_SAT_LAMA_E = f"./output/{PLANNERS[2]}/{DOMAINS[0]}"
-SEQ_SAT_LAMA_T = f"./output/{PLANNERS[0]}/{DOMAINS[1]}"
-SEQ_OPT_FDSS_E = f"./output/{PLANNERS[1]}/{DOMAINS[0]}"
-SEQ_OPT_FDSS_T = f"./output/{PLANNERS[2]}/{DOMAINS[1]}"
+SEARCH_ALGORITHM =  ["eager_wastar"]
+W_VALUE = [1, 3, 5, 10, 20, 50, 80, 100]
+HEURISTICS = ["add()", "ff()","landmark_sum()", "cea()", "cg()", "goalcount()"]
+K_BEST = [1, 100, 200, 300, 400, 500, 1000, 1500, 2000, 2500, 3000]
+DOMAINS = ["elevators", "transport"]
